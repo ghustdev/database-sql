@@ -2,10 +2,10 @@
  Learn SQL and PostgreSQL 
 
 ---
-[ ] - Exercise 1 - Customer Address
+[x] - Exercise 1 - Customer Address
 
 ---
-[ ] - Exercise 2 - 
+[x] - Exercise 2 - No Rental
 
 ---
 [ ] - Exercise 3 -
