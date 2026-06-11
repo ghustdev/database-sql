@@ -7,6 +7,8 @@
     -- FOREIGN KEY (id_customers) REFERENCES customers(id)
 -- );
 
+-- Diferent Solutions:
+
 -- Subquerys
 SELECT id, name 
 FROM customers 
@@ -15,8 +17,11 @@ WHERE id NOT IN (
 )
 ORDER BY id;
 
+SELECT c.id, c.name FROM customers AS c JOIN locations AS l
+ON c.id != l.id_customers ORDER BY c.id;
 
--- Left Join
+
+-- Left Join     
 SELECT c.id, c.name 
 FROM customers AS c
 LEFT JOIN locations AS l ON c.id = l.id_customers
