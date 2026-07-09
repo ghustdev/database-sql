@@ -1,0 +1,40 @@
+WITH TotalVencimentos AS (
+    SELECT 
+        ev.matr, 
+        SUM(v.valor) AS total_venc
+    FROM emp_venc ev
+    INNER JOIN vencimento v ON ev.cod_venc = v.cod_venc
+    GROUP BY ev.matr
+),
+TotalDescontos AS (
+    SELECT 
+        ed.matr, 
+        SUM(d.valor) AS total_desc
+    FROM emp_desc ed
+    INNER JOIN desconto d ON ed.cod_desc = d.cod_desc
+    GROUP BY ed.matr
+),
+SalarioLiquido AS (
+    SELECT 
+        emp.matr,
+        emp.lotacao_div,
+        (COALESCE(tv.total_venc, 0) - COALESCE(td.total_desc, 0)) AS salario
+    FROM empregado emp
+    LEFT JOIN TotalVencimentos tv ON emp.matr = tv.matr
+    LEFT JOIN TotalDescontos td ON emp.matr = td.matr
+)
+SELECT 
+    dep.nome AS departamento, 
+    div.nome AS divisao, 
+    ROUND(AVG(sl.salario), 2) AS media, 
+    ROUND(MAX(sl.salario), 2) AS maior
+FROM departamento dep
+INNER JOIN divisao div ON dep.cod_dep = div.cod_dep
+INNER JOIN SalarioLiquido sl ON div.cod_divisao = sl.lotacao_div
+GROUP BY 
+    dep.cod_dep, 
+    dep.nome, 
+    div.cod_divisao, 
+    div.nome
+ORDER BY 
+    AVG(sl.salario) DESC;
