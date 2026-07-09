@@ -22,7 +22,10 @@
 <img width="733" height="412" alt="image" src="https://github.com/user-attachments/assets/a8221c22-da50-494d-b793-c31597a40484" />
 
 ---
-[x] - Exercise 5 -
+[x] - Exercise 5 - 2998 - The Payback
+<img width="729" height="633" alt="image" src="https://github.com/user-attachments/assets/510213c1-7c0d-448b-9fd1-2991a3a7f7b2" />
 
 ---
-[ ] - Exercise 6 -
+[x] - Exercise 6 - 2989 - Departments and Divisions
+<img width="729" height="739" alt="image" src="https://github.com/user-attachments/assets/fc9811f3-4f75-4d42-95f9-22b25e2d74d6" />
+
